@@ -28,34 +28,40 @@
 
     <div class = "row main centered">
       <div class = "col-lg-6">
-      <button type="button" class="btn btn-default btn-lg start-btn">Start the game!</button>
+      <button type="button" class="btn btn-default btn-lg" id = "start_button">Generate number / Start Game</button>
     </div>
-      <div class="col-lg-6">
-        <div class = "row">
-          <div class = "col-sm-6">
+      <div class="col-lg-6 ">
+        <div class = "row" id = "stage">
+        <div class = "col-sm-6">
             <p>Enter a number between 1 and 100:</p>
           </div>
           <div class = "col-lg-6">
-            <div class="input-group go-button">
-            <input type="text" class="form-control">
+            <div class="input-group go-button start_number">
+            <input type="text" class="form-control start_number">
           </div>
         </div>
           <div class = "col-sm-12">
             <span class="input-group-btn">
-              <button class="btn btn-default go-button-go" type="button">Go!</button>
+              <button class="btn btn-default go-button-go" id = "go_button" type="button">Go!</button>
             </span>
+            <div id = "game_area">
+            </div>
+            <div id = "hint">
+              <button class="btn btn-default" id = "hint" type="button">Give me a hint!</button>
+            </div>
           </div>
-        </div>
+        </div>"  
         </div>
       </div> 
     </div>
     <div class = "row main centered">
-      <div class = "col-lg-6">
-      <button type="button" class="btn btn-default btn-lg start-btn">Try over!</button>
+      <div class = "col-lg-6" id = "reload_space">
+        <button type="button" class="btn btn-default btn-lg" id = "reload_button">Try Again!</button>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-  </body>
+    <script src="js/script.js"></script>
+  </body> 
 </html>

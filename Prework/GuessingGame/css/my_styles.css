@@ -13,7 +13,7 @@ h1 {
 
 p {
 	font-size: 18px;
-	font-weight: bold;
+	font-weight: normal;
 }
 
 .start-btn {
@@ -58,6 +58,23 @@ p {
 .centered
 {
     text-align:center;
+}
+
+.hot {
+	background-color: #fcaa74;
+}
+
+.cold {
+	background-color: #7596ea;
+}
+
+#game_area {
+	padding: 10px;
+}
+
+#hint {
+	margin-top: 10px;
+	font-family: inherit;
 }
 
 /*MEDIA QUERIES*/
