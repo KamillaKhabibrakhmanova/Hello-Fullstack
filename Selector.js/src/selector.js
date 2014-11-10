@@ -6,6 +6,12 @@ function Node(id_name, class_name, tag, content) {
 
 }
 
+function selectorMatch(sample, selector) {
+  if (sample === selector) {
+    return true;
+  } else { return false; }
+};
+
 var traverseDomAndCollectElements = function(matchFunc, startEl) {
   var resultSet = [];
   var children = [];
@@ -13,21 +19,13 @@ var traverseDomAndCollectElements = function(matchFunc, startEl) {
   if (typeof startEl === "undefined") {
     startEl = document.body;
   }
-  // your code here
   // traverse the DOM tree and collect matching elements in resultSet
   // use matchFunc to identify matching elements
   var collect = function(start) {
-    if (start.childNodes.length === 0) {
-      var node = new Node(start.id, start.className, start.localName, start.innerHTML);
-      children.push(node);
-    }
-    else {
-      var node = new Node(start.id, start.className, start.localName, start.innerHTML);
+    var node = new Node(start.id, start.className, start.localName, start.innerHTML);
       children.push(node);
       for (var i = 0; i < start.childNodes.length; i++) {
         collect(start.childNodes[i]);
-      }
-
     }
   }
 
@@ -38,19 +36,9 @@ var traverseDomAndCollectElements = function(matchFunc, startEl) {
       resultSet.push(child);
     }
   });
-  // for(var i = 0; i < children.length; i++) {
-  //   if (matchFunc(children[i]) === true){
-  //     resultSet.push(children[i]);
-  //   }
-  // }
-
   return resultSet;
 };
 
-
-// detect and return the type of selector
-// return one of these types: id, class, tag.class, tag
-//
 var selectorTypeMatcher = function(selector) {
   // your code here
   var tags = ["h2","head", "body", "title", "h1", "div", "p", "img"];
@@ -78,37 +66,23 @@ var selectorTypeMatcher = function(selector) {
 var matchFunctionMaker = function(selector) {
   var selectorType = selectorTypeMatcher(selector);
   var matchFunction;
-  if (selectorType === "id") {
 
-    // check if "#selector" === <tag id = "selector">
-    // define matchFunction for id
+  if (selectorType === "id") {
     selector = selector.slice(1);
     matchFunction = function(sample) {
 
       sample = sample.id;
-      if (sample === selector){
-        return true;
-      }
-      else {
-        return false;
-      }
+      return selectorMatch(sample, selector);
     }
 
   } else if (selectorType === "class") {
-    // define matchFunction for class
     selector = selector.slice(1);
 
     matchFunction = function(sample) {
       sample = sample.className;
-
-      
+     
       if (sample == undefined){
-        if (sample === selector) {
-          return true;
-        }
-        else {
-          return false;
-        }
+        return selectorMatch(sample, selector);
       }
       else {
         var sample_list = sample.split(" ");
@@ -121,17 +95,11 @@ var matchFunctionMaker = function(selector) {
       }
     }
   } else if (selectorType === "tag.class") {
-    // define matchFunction for tag.class
     matchFunction = function(sample) {
       sample_class = sample.className;
       if (sample_class == undefined) {
         sample = sample.localName + "." + sample_class;
-        if (sample === selector){
-          return true;
-        }
-        else {
-          return false;
-        }
+        return selectorMatch(sample, selector);
       }
       else {
         var sample_class_list = sample_class.split(" ");
@@ -143,22 +111,13 @@ var matchFunctionMaker = function(selector) {
         }
         return false;
       }
-
     }
     
   } else if (selectorType === "tag") {
-
     matchFunction = function(sample) {
       sample = sample.localName;
-      if (sample === selector){
-        return true;
-      }
-      else {
-        return false;
-      }
-    }
-    // define matchFunction for tag
-    
+      return selectorMatch(sample, selector);
+    }    
   }
   return matchFunction;
 };
