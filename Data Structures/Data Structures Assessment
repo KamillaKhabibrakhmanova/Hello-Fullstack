@@ -1,0 +1,95 @@
+# Data Structures Assessment
+
+## Time Complexity
+
+Describe the time complexity (or space) for the following operations. If you can express your answer in Big O notation, that's awesome. If not, just say "fast," or "slow"
+
+1. Array
+  - Insert:
+  - Index (getting with an index eg fooArray[3]):
+  - Search:
+  - Space:
+2. Linked List
+  - Insert:
+  - Search:
+  - Space:
+3. Hash Table
+  - Insert:
+  - Search:
+  - Space:
+
+## Hash Tables
+
+4. What is a hashing function?
+5. In javascript, you can think of ________ as hash tables?
+
+
+******Data Structure Lecture Notes ********
+
+* "O" is "order of" 
+* "Data Structure" is a blueprint on how to organize data
+* Cache - memory that's on your motherboard (L1, L2, L3). Very expensive.
+* CPU Registers - memory inside your CPU
+
+* Array indexes are actually "jumps" for assembly instructions, which is why they still start from 0
+
+* Linked Lists:
+  * Solved some of the problems with non-dynamic Arrays (old school Arrays) - (1)couldn't add things to an array once it was created - needed to create a new one with the added value; (2) couldn't move values within an array easily
+  * Not used much in practice today, but tested all the time in programming interviews
+  * Head node points to a Node, which only knows about the Node that will come next (each Node has a value and a NEXT pointer). If the NEXT pointer is null, the list has ended.
+  * Finding a Node required traversing the whole list, starting with HEAD
+  * Adding a Node: Create a pointer to the next Node, then change the pointer of the Node that should precede it
+  * Doubly Linked Lists - take up more memory but improve search
+    * Each node has two pointers - to next and to previous nodes
+  * Search time is O(n)
+
+* Trees and Hashes
+  * Searching is really slow in linked lists and arrays --> use Trees if you need a lot of searching
+
+  * Binary Search Trees (BST)
+    * Each node has two linked nodes
+      * The first number you enter is the root
+      * The next number:
+        * If its larger than the root, it's the right child. Another number larger than the root but smaller than the right child will become the left child of the right child.
+        * If it's smaller than the root, it becomes the left child
+        * Search time is O(log n) - half the search time of linked lists
+
+  * Hash Tables
+    * 
+    var hash = function(str) {
+      var sum = 0;
+      for (var i = 0; i < str.length; i++) {
+        sum += str.charCodeAt(i); //gives the integer value of any character you can put in a string
+      }
+      return sum % 25;
+    }
+
+    var myHashTable = new HashTable();
+
+    myHashTable.set('elephant', 'a whole article about elephants')
+
+    myHashTable.get('elephant') // a whole article about elephants
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,9 +7,7 @@ function Node(id_name, class_name, tag, content) {
 }
 
 function selectorMatch(sample, selector) {
-  if (sample === selector) {
-    return true;
-  } else { return false; }
+  return (sample === selector);
 };
 
 var traverseDomAndCollectElements = function(matchFunc, startEl) {
@@ -23,18 +21,14 @@ var traverseDomAndCollectElements = function(matchFunc, startEl) {
   // use matchFunc to identify matching elements
   var collect = function(start) {
     var node = new Node(start.id, start.className, start.localName, start.innerHTML);
-      children.push(node);
+      if(matchfunc(node)) {
+        resultSet.push(child);
+      }
       for (var i = 0; i < start.childNodes.length; i++) {
         collect(start.childNodes[i]);
+      }
     }
-  }
 
-  collect(startEl);
-
-  children.forEach(function(child) {
-    if (matchFunc(child) === true) {
-      resultSet.push(child);
-    }
   });
   return resultSet;
 };
@@ -70,9 +64,7 @@ var matchFunctionMaker = function(selector) {
   if (selectorType === "id") {
     selector = selector.slice(1);
     matchFunction = function(sample) {
-
-      sample = sample.id;
-      return selectorMatch(sample, selector);
+      return selectorMatch(sample.id, selector);
     }
 
   } else if (selectorType === "class") {
