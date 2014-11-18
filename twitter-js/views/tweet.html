@@ -1,0 +1,12 @@
+<div class="tweetbox">
+    <div>
+        <img src="http://lorempixel.com/48/48?{{ tweet.User.name }}" />
+        <div class="content">
+            <div><a href="/users/{{ tweet.User.name }}">{{tweet.User.name}}</a>
+            </div>
+            <div class="by"><a href="/users/{{ tweet.User.name }}/tweets/{{ tweet.id }}">{{ tweet.tweet }}</a>
+            </div>
+
+        </div>
+    </div>
+</div>
