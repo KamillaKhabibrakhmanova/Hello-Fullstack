@@ -1,0 +1,17 @@
+<!-- add_page.html -->
+{% extends "layout.html" %} {% block title %}WikiStack - Add a Page{% endblock %} {% block content %}
+<h1>ADD A PAGE</h1>
+<form action='/add/submit' method = 'POST'>
+    <div class="form-group">
+        <label for="PageTitle">PAGE TITLE</label>
+        <input type="text" class="form-control" id="pagetitle" placeholder="Enter page title" name="title">
+    </div>
+    <div class="form-group">
+        <label for="PageContent">PAGE CONTENT</label>
+        <textarea class="form-control" rows="10" input type="text" class="form-control" id="pagecontent" placeholder="Enter content" name="body">
+        </textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+{% endblock %}
